@@ -3,8 +3,8 @@ package logic
 import (
 	"context"
 
-	"userApi/internal/svc"
-	"userApi/internal/types"
+	"subModule/userApi/internal/svc"
+	"subModule/userApi/internal/types"
 
 	"github.com/tal-tech/go-zero/core/logx"
 )
