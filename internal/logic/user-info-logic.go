@@ -30,6 +30,7 @@ func (l *UserInfoLogic) UserInfo(req types.InfoReq) (*types.InfoReply, error) {
 	resp, err := l.svcCtx.UserRpc.Info(l.ctx, &userrpcclient.InfoRequest{
 		Id: req.Id,
 	})
+
 	if err != nil {
 		return nil, err
 	}
