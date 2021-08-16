@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package userRpc;
+
+message Request {
+  string ping = 1;
+}
+
+message Response {
+  string pong = 1;
+}
+
+message InfoRequest {
+  string Id = 1;
+}
+
+message InfoResponse {
+  string Id = 1;
+  string Name = 2;
+}
+
+service UserRpc {
+  rpc Ping(Request) returns(Response);
+
+  rpc Info(InfoRequest)returns(InfoResponse);
+}
