@@ -2,6 +2,7 @@ package logic
 
 import (
 	"context"
+	"subModule/userRpc/userrpcclient"
 
 	"subModule/userApi/internal/svc"
 	"subModule/userApi/internal/types"
@@ -26,5 +27,14 @@ func NewUserInfoLogic(ctx context.Context, svcCtx *svc.ServiceContext) UserInfoL
 func (l *UserInfoLogic) UserInfo(req types.InfoReq) (*types.InfoReply, error) {
 	// todo: add your logic here and delete this line
 
-	return &types.InfoReply{}, nil
+	resp, err := l.svcCtx.UserRpc.Info(l.ctx, &userrpcclient.InfoRequest{
+		Id: req.Id,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return &types.InfoReply{
+		Id: resp.Id,
+		Name: resp.Name,
+	}, nil
 }
